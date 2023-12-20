@@ -1,0 +1,36 @@
+[tool.poetry]
+name = "read-pdf"
+version = "0.1.0"
+description = "Leitura de arquivo pdf e interação com seu conteúdo"
+authors = ["Moisés Arruda <moises_arruda@outlook.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "3.10.10"
+chromadb = "0.4.15"
+openai = "0.28.1"
+tiktoken = "^0.5.2"
+pypdf = "^3.17.3"
+langchain = "0.0.216"
+pytest = "^7.4.3"
+python-dotenv = "^1.0.0"
+mkdocs = "^1.5.3"
+taskipy = "^1.12.2"
+mkdocstrings-python = "^1.7.5"
+pygments = "^2.17.2"
+mkdocs-material = "^9.5.2"
+pymdown-extensions = "^10.5"
+
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.27.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.taskipy.tasks]
+test = "python -m pytest"
+kill = "lsof -t -i:8000"
+doc = "mkdocs serve"
