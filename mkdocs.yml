@@ -1,0 +1,21 @@
+site_name: My Docs
+site_name: Projeto de leitura de PDF e interação com LLM
+theme:
+  name: material # or other theme seraching in google themes MKdocs
+  palette:
+    primary: blue
+  language: en
+
+repo_name: "MoisesArruda/Read_pdfLLM"
+repo_url: "https://github.com/MoisesArruda/Read_pdfLLM.git"
+
+markdown_extensions:
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+
+plugins:
+  - search
+  - mkdocstrings:
+      default_handler: python
