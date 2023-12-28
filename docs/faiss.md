@@ -1,3 +1,3 @@
 # Desenvolvimento do pacote principal
 
-### ::: app.fais.main
+### ::: app.faiss.main
