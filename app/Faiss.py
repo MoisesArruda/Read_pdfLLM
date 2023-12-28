@@ -53,48 +53,50 @@ def main(query=None):
 
     return llm,db,query, output,qa2
 
-# %%
-llm,db,query, output,qa2 = main()
 
-# %%
-print(llm,query,output,qa2)
+def main2():
+    # %%
+    llm,db,query, output,qa2 = main()
 
-# %%
-FAISS_index = FAISS.from_documents(pages,embeddings)
+    # %%
+    print(llm,query,output,qa2)
 
-# %%
-docs = FAISS_index.similarity_search(query,k=2)
-for doc in docs:
-    print(str(doc.metadata["page"])+ ":", doc.page_content[:300])
+    # %%
+    FAISS_index = FAISS.from_documents(pages,embeddings)
 
-# %%
-print(docs[0].page_content)
+    # %%
+    docs = FAISS_index.similarity_search(query,k=2)
+    for doc in docs:
+        print(str(doc.metadata["page"])+ ":", doc.page_content[:300])
 
-# %%
-template = """You need to help students. Answer the question based on the information provided. If the
-question cannot be answered using the information provided answer
-with "I don't know"
+    # %%
+    print(docs[0].page_content)
 
-Question: {query}
-Chatbot:"""
+    # %%
+    template = """You need to help students. Answer the question based on the information provided. If the
+    question cannot be answered using the information provided answer
+    with "I don't know"
 
-#%%
-query = "O que é Docker?"
+    Question: {query}
+    Chatbot:"""
 
-#%%
-prompt = PromptTemplate(template=template,input_variables=['query'])
+    #%%
+    query = "O que é Docker?"
 
-memory = ConversationBufferMemory(memory_key="chat_history",return_messages=True,input_key="query")
+    #%%
+    prompt = PromptTemplate(template=template,input_variables=['query'])
 
-# %%
-llm_chain = LLMChain(
-    llm=llm,
-    prompt=prompt,
-    verbose=True,
-    memory=memory
-)
+    memory = ConversationBufferMemory(memory_key="chat_history",return_messages=True,input_key="query")
 
-# %%
-llm_chain.run(query)
-# %%
-memory
+    # %%
+    llm_chain = LLMChain(
+        llm=llm,
+        prompt=prompt,
+        verbose=True,
+        memory=memory
+    )
+
+    # %%
+    llm_chain.run(query)
+    # %%
+    memory

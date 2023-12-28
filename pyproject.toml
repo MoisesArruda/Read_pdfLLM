@@ -22,7 +22,8 @@ pygments = "^2.17.2"
 mkdocs-material = "^9.5.2"
 pymdown-extensions = "^10.5"
 faiss-cpu = "^1.7.4"
-
+chroma-migrate = "^0.0.7"
+hnswlib = { version = "0.8.0" }
 
 [tool.poetry.group.dev.dependencies]
 ipykernel = "^6.27.1"
